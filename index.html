@@ -58,11 +58,16 @@
     function copyConnectCommand() {
       const ip = "scavrust.axenthost.me:47007";
       const command = `client.connect ${ip}`;
-      navigator.clipboard.writeText(command).then(function() {
-        alert("Connect command copied to clipboard!");
-      }, function() {
-        alert("Failed to copy connect command.");
-      });
+      
+      // Create a temporary textarea to select and copy the text
+      const textArea = document.createElement("textarea");
+      textArea.value = command;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      
+      alert("Connect command copied to clipboard!");
     }
   </script>
 </head>
