@@ -31,7 +31,7 @@
       margin-bottom: 2rem;
     }
 
-    .connect-button {
+    .connect-button, .copy-button {
       background-color: #c0392b;
       color: white;
       padding: 1rem 2rem;
@@ -40,9 +40,10 @@
       border-radius: 10px;
       box-shadow: 0 0 10px #000;
       transition: background 0.3s ease;
+      margin-bottom: 1rem; /* Add space between buttons */
     }
 
-    .connect-button:hover {
+    .connect-button:hover, .copy-button:hover {
       background-color: #a93226;
     }
 
@@ -53,11 +54,23 @@
       color: #888;
     }
   </style>
+  <script>
+    function copyConnectCommand() {
+      const ip = "scavrust.axenthost.me:47007";
+      const command = `client.connect ${ip}`;
+      navigator.clipboard.writeText(command).then(function() {
+        alert("Connect command copied to clipboard!");
+      }, function() {
+        alert("Failed to copy connect command.");
+      });
+    }
+  </script>
 </head>
 <body>
   <h1>Welcome to ScavRust</h1>
   <p>Click below to join our server instantly.</p>
   <a href="steam://connect/scavrust.axenthost.me:47007" class="connect-button">Join via Steam</a>
+  <button class="copy-button" onclick="copyConnectCommand()">Copy Connect Command</button>
   <div class="footer">IP: scavrust.axenthost.me:47007</div>
 </body>
 </html>
